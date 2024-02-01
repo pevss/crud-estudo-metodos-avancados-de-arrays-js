@@ -1,0 +1,364 @@
+:root{
+    --fundo: #0C0A09;
+    --primaria: #E7E5E4;
+    --secundaria: #292524;
+    --secundaria-dois:#1C1917; 
+
+    --detalhe: #78716C; 
+    --detalhe-dois: #44403C;
+    --accent: #1E40AF;
+    --accent--detalhe: #22377A;
+    --destrutivo: #B91C1C;
+    --destrutivo--dois: #DC2626;
+    --editar: #F59E0B;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 1rem;
+    user-select: none;
+}
+
+body{
+    all: unset;
+    background-color: var(--fundo);
+    color: var(--primaria);
+    display: relative;
+}
+
+.ui{
+    max-width: 1140px;
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titulo{
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+hgroup h2{
+    color: var(--detalhe);
+    font-weight: 300; 
+}
+
+.adicionar--produto{
+    all: unset;
+    background-color: var(--accent);
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: .3s ease-in-out;
+    transition-property: transform;
+}
+
+.adicionar--produto:focus{
+    outline: solid var(--accent) .1rem;
+    outline-offset: .1rem;
+}
+
+.adicionar--produto:hover{
+    transform: translateY(-1px);
+}
+
+
+.filtrar{
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    height: 39px;
+}
+
+
+.filtro--texto{
+    display: flex;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.icon--wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--accent);
+    padding: .5rem;
+    border-radius: .5rem 0 0 .5rem;
+    height: 100%;
+}
+
+.filtro--texto i{
+    font-size: 1.3rem;
+}
+
+.input--filtro--texto{
+    padding: .5rem;
+    border-radius: 0 .5rem .5rem 0 ;
+    border: solid transparent .05rem;
+    width: 100%;
+    background-color: var(--secundaria);
+    caret-color: var(--primaria);
+    color: var(--primaria);
+}
+
+.input--filtro--texto:focus{
+    outline: none;
+    box-shadow: inset -.2px 0 0 .01rem var(--primaria)
+}
+
+.input--filtro--texto::placeholder{
+    font-weight: 300;
+    color: var(--primaria);
+    opacity: 15%;
+}
+
+.input--filtro--parametro{
+    display: none;
+}
+
+.filtro--parametro:has(:checked:nth-of-type(1)){--active: 0;}
+.filtro--parametro:has(:checked:nth-of-type(2)){--active: 1;}
+.filtro--parametro:has(:checked:nth-of-type(3)){--active: 2;}
+
+.filtro--parametro{
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 5rem;
+    height: 100%;
+
+    background-color: var(--secundaria);
+    border-radius: .5rem;
+    border: .3rem solid var(--secundaria);
+}
+
+.filtro--parametro label{
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    height: 100%;
+    border-radius: calc(.5rem - .2rem);
+}
+
+.input--filtro--parametro:not(:checked) + label:hover{
+    background-color: var(--detalhe-dois);
+}
+
+.filtro--parametro::after{
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    background-color: var(--primaria);
+    width: calc(100% / 3);
+    height: 100%;
+    gap: 1rem;
+    translate: calc(var(--active) * 100%);
+    transition: .3s ease-in-out;
+    border-radius: calc(.5rem - .2rem);
+    mix-blend-mode: difference;
+}
+
+
+.tabela--main{
+    border-collapse: collapse;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+
+.tabela--header{
+    background-color: var(--accent);
+}
+
+.tabela--header tr th, .tabela--item td{
+    border-right: solid 1px var(--secundaria);
+    padding: .8rem;
+    text-align: left;
+}
+
+.tabela--header tr th{
+    border-bottom: solid 1px var(--fundo); 
+    border-right: solid 1px var(--accent--detalhe);
+}
+
+.tabela--item{
+    background-color: var(--secundaria-dois);
+    transition: .1s ease-out;
+}
+
+.tabela--item:hover{
+    background-color: var(--secundaria);
+}
+
+.tabela--item:hover *:not(i){
+    border-right: solid 1px var(--detalhe-dois);
+}
+
+.tabela--header tr th:nth-of-type(4), .tabela--header tr th:last-of-type, .tabela--item td:last-of-type{
+    border-right: none;
+}
+
+.tabela--texto{
+    cursor: pointer;
+}
+
+.item--editar, .item--excluir{
+    cursor: pointer;
+}
+
+.item--excluir{
+    color: var(--destrutivo);
+}
+
+
+.modal--overlay, .modal--excluir--overlay, .modal--editar--overlay{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background-color: var(--fundo);
+    opacity: 70%;
+}
+
+.modal, .modal--excluir, .modal--editar{
+    z-index: 3;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+
+    padding: 1.5rem;
+    background-color: var(--secundaria);
+    border-radius: .5rem;
+}
+
+.modal i, .modal--excluir i, .modal--editar i{
+    position: absolute;
+    top: .5rem;
+    right: .5rem;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.modal--texto, .modal--excluir-texto, .modal--editar--texto{
+    display: flex;
+    flex-direction: column;
+}
+
+.modal--texto h1, .modal--excluir--texto h1, .modal--editar--texto h1{
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.modal--texto p, .modal--excluir--texto p, .modal--editar--texto p{
+    font-weight: 300;
+    color: var(--detalhe);
+}
+
+.modal--inputs, .modal--editar--inputs{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.modal--form, .modal--excluir--form, .modal--editar--form{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal--form input, .modal--editar--form input{
+    position: relative;
+    padding: .5rem;
+    border-radius: .5rem ;
+    border: solid transparent .05rem;
+    width: 100%;
+    background-color: var(--secundaria-dois);
+    caret-color: var(--primaria);
+    color: var(--primaria);
+}
+
+.modal--form input:focus, .modal--editar--form input:focus{
+    outline: none;
+    box-shadow: inset 0 0 0 .03rem var(--primaria)
+}
+
+.modal--form input::placeholder, .modal--editar--form input::placeholder{
+    font-weight: 300;
+    color: var(--primaria);
+    opacity: 15%;
+}
+
+.modal--acoes, .modal--excluir--acoes, .modal--editar--acoes{
+    display: flex;
+    justify-content: end;
+    gap: .5rem;
+}
+
+.modal--submit, .modal--excluir--submit, .modal--editar--submit{
+    all: unset;
+    background-color: var(--accent);
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    font-weight: 800;
+    transition: .3s ease-in-out;
+    transition-property: transform;
+}
+
+.modal--excluir--submit{
+    background-color: var(--destrutivo);
+}
+
+.modal--submit:focus, .modal--editar--submit:focus{
+    outline: solid var(--accent) .1rem;
+    outline-offset: .1rem;
+}
+
+.modal--excluir--submit:focus{
+    outline: solid var(--destrutivo) .1rem;
+    outline-offset: .1rem;
+}
+
+.modal--submit:hover, .modal--cancelar:hover, .modal--excluir--submit:hover, .modal--excluir--cancelar:hover, .modal--editar--submit:hover, .modal--editar--cancelar:hover{
+    transform: translateY(-1px);
+}
+
+.modal--cancelar, .modal--excluir--cancelar, .modal--editar--cancelar{
+    all: unset;
+    border: solid .1rem var(--detalhe-dois);
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    cursor: pointer;
+    font-weight: 300;
+    transition: .3s ease-in-out;
+    transition-property: transform;
+}
+
+.modal--cancelar:focus, .modal--excluir--cancelar:focus, .modal--editar--cancelar:focus{
+    outline: solid var(--detalhe-dois) .1rem;
+    outline-offset: .1rem;
+}
+
+
+.escondido{
+    display: none;
+}

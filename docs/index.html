@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <title>Estudo <table> e <form></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;500;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+</head>
+
+<body>
+    <div class="modal escondido">
+        <i class="ph-bold ph-x"></i>
+
+        <div class="modal--texto">
+            <h1>Adicione um produto</h1>
+            <p>Preencha os campos abaixo para adicionar um novo item.</p>
+        </div>
+
+        <form class="modal--form">
+            <div class="modal--inputs">
+                <input class="input--nome" type="text" placeholder="Digite o nome do produto" required>
+                <input class="input--preco" type="text" placeholder="Digite o preço do produto" required>
+            </div>
+
+            <div class="modal--acoes">
+                <button type="button" class="modal--cancelar">Cancelar</button>
+                <button type="submit" class="modal--submit">Adicionar</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal--overlay escondido"></div>
+
+    <div class="modal--editar escondido" style="max-width: 458px;">
+        <i class="ph-bold ph-x"></i>
+
+        <div class="modal--editar--texto">
+            <h1></h1>
+            <p>Caso queira manter alguma informação como está, deixe seu campo respectivo vazio.</p>
+        </div>
+
+        <form class="modal--editar--form">
+            <div class="modal--editar--inputs">
+                <input class="input--editar--nome" type="text" placeholder="Digite o novo nome do produto">
+                <input class="input--editar--preco" type="text" placeholder="Digite o novo preço do produto">
+            </div>
+
+            <div class="modal--editar--acoes">
+                <button type="button" class="modal--editar--cancelar">Cancelar</button>
+                <button type="submit" class="modal--editar--submit">Atualizar</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal--editar--overlay escondido"></div>
+
+    <div class="modal--excluir escondido" style="max-width: 458px;">
+        <i class="ph-bold ph-x"></i>
+
+        <div class="modal--excluir--texto">
+            <h1></h1>
+            <p>Essa ação é irreversível.</p>
+        </div>
+
+        <form class="modal--excluir--form">
+            <div class="modal--excluir--acoes">
+                <button type="button" class="modal--excluir--cancelar">Cancelar</button>
+                <button type="submit" class="modal--excluir--submit">Excluir</button>
+            </div>
+        </form>
+    </div>
+    <div class="modal--excluir--overlay escondido"></div>
+
+    <main class="ui">
+        <header class="header">
+            <hgroup>
+                <h1 class="titulo">Seus produtos</h1>
+                <h2>Foram encontrados <span class="contador"></span> produtos.</h2>
+            </hgroup>
+            
+            <button class="adicionar--produto">Adicionar produto</button>
+        </header>
+        
+        <div class="filtrar">
+            <div class="filtro--texto">
+                <div class="icon--wrapper">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                </div>
+                <input class="input--filtro--texto" type="text" placeholder="O que você procura?" size="">
+            </div>
+
+            <div class="filtro--parametro">
+                <input class="input--filtro--parametro" type="radio" name="filtro--parametro" id="id" value="id">
+                <label for="id">ID</label>
+                
+                <input class="input--filtro--parametro" type="radio" name="filtro--parametro" id="nome" value="nome" checked>
+                <label for="nome">Nome</label>
+                
+                <input class="input--filtro--parametro" type="radio" name="filtro--parametro" id="preco" value="preco">
+                <label for="preco">Preço</label>
+            </div>
+        </div>
+
+        <table class="tabela--main">
+            <thead class="tabela--header">
+                <tr>
+                    <th class="tabela--texto id" style="width: 150px;">ID</th>
+                    <th class="tabela--texto nome">Nome</th>
+                    <th class="tabela--texto preco" style="width: 150px;">Preço</th>
+                    <th style="width: 50px;"></th>
+                    <th style="width: 50px;"></th>
+                </tr>
+            </thead>
+            <tbody class="tabela--itens">
+            </tbody>
+        </table>
+    </main>
+    <script src="script/script.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+</html>
