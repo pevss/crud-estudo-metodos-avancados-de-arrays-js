@@ -27,5 +27,6 @@ Por mais que o objetivo inicial tenha sido praticar os conteúdos vistos no curs
 
 ---
 
-Site com o projeto funcional: https://pevss.github.io/estudo-metodos-avancados-de-arrays-js/
+Site com o projeto funcional: https://pevss.github.io/crud-estudo-metodos-avancados-de-arrays-js/
+
 (eu estava mais focado com o JS, então, por mais simples que seja, não me preocupei com a responsividade para aparelhos mobile, provavelmente farei isso no futuro.)
