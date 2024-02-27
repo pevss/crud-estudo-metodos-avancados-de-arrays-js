@@ -24,3 +24,9 @@ Conclusão
 No geral, esse foi um projetinho bem interessante de se desenvolver. Consegui aplicar tudo que eu gostaria para me sentir confiante de avançar meus estudos na Udemy.
 
 Por mais que o objetivo inicial tenha sido praticar os conteúdos vistos no curso de JavaScript, aprendi bastante sobre CSS, principalmente sobre o funcionamento da pseudo-classe "::before" e a existência de variáveis condicionais com o seletor ":has".
+
+---
+
+Site com o projeto funcional: https://pevss.github.io/crud-estudo-metodos-avancados-de-arrays-js/
+
+(eu estava mais focado com o JS, então, por mais simples que seja, não me preocupei com a responsividade para aparelhos mobile, provavelmente farei isso no futuro.)
