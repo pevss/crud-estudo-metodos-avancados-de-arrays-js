@@ -72,6 +72,7 @@ const produtos = [
 
 let produtosFiltrado = [];
 let iDprodutoExcluido, iDprodutoEditado;
+labelContador.textContent = produtos.length; //setando o contador de produtos para a quantidade de produtos já existentes no sistema
 
 
 // Funções
@@ -121,7 +122,6 @@ const mostrarProdutos = function(produtos, sort = false, parametro = false){
         mensagemWrapper.append(mensagem);
         tabelaBase.append(mensagemWrapper);
     } else {
-        labelContador.textContent = produtosArr.length
         produtosArr.forEach((el) => {
             const item = document.createElement("tr");
             item.classList.add("tabela--item");
@@ -318,6 +318,8 @@ inputFiltroTexto.addEventListener("input", function(e){
         mensagemWrapper.append(mensagem);
         tabelaBase.append(mensagemWrapper);
     } else mostrarProdutos(resultadoFiltrado);
+
+    labelContador.textContent = resultadoFiltrado.length;
 });
 
 
